@@ -1,6 +1,9 @@
 {
     "name": "draw_me_please",
-    "keywords": ["draw", "canvas"],
+    "keywords": [
+        "draw",
+        "canvas"
+    ],
     "version": "1.0.0",
     "author": "Serbaev",
     "devDependencies": {
@@ -34,5 +37,8 @@
         "last 1 version",
         "> 1%",
         "IE 10"
-    ]
+    ],
+    "dependencies": {
+        "@supabase/supabase-js": "^1.11.9"
+    }
 }

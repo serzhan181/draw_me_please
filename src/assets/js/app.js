@@ -1,1 +1,3 @@
-console.log('file 1');
+document.addEventListener('DOMContentLoaded', main)
+
+function main() {}

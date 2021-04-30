@@ -1,0 +1,6 @@
+{
+    "URL": "https://scfzhzrhzrxdyobnotmw.supabase.co",
+    "JWT_SECRET": "8aead631-5b10-4131-b076-1161ecff3a96",
+    "API_PUBLIC": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYxOTcxNDIzOCwiZXhwIjoxOTM1MjkwMjM4fQ.dikLjst6DO-bvN-nZntZOXyfdUHftei0TQZjWHk8gBo",
+    "API_SECRET": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjE5NzE0MjM4LCJleHAiOjE5MzUyOTAyMzh9.fwGJJPXWjbJVOiojlT-p4pHhs4pmUl41zHurXmBSHDw"
+}
