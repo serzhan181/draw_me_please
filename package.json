@@ -1,9 +1,8 @@
 {
-    "name": "brainscloud",
-    "keywords": ["vanilla js", "gulp", "setup gulp", "setup gulp", "project setup", "javascript setup"],
+    "name": "draw_me_please",
+    "keywords": ["draw", "canvas"],
     "version": "1.0.0",
-    "description": "brainscloud",
-    "author": "brainscloud",
+    "author": "Serbaev",
     "devDependencies": {
         "@babel/core": "^7.12.3",
         "@babel/preset-env": "^7.12.1",
