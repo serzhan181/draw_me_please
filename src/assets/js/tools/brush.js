@@ -32,7 +32,6 @@ export class Brush extends Tool {
     this.ctx.lineTo(x, y)
     this.ctx.fillStroke = 'green'
     this.ctx.stroke()
-    this.ctx.lineWidth = 3
   }
 
   clearCanvas() {
