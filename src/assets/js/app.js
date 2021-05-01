@@ -2,6 +2,7 @@ import { Brush } from './tools/brush.js'
 import { Rect } from './tools/rect.js'
 import { Eraser } from './tools/eraser.js'
 import { tool } from './store/toolState.js'
+import { canvasState } from './store/canvasState.js'
 
 document.addEventListener('DOMContentLoaded', main)
 
@@ -18,11 +19,14 @@ function toolInit() {
   const tool_brush = document.getElementById('tool-brush')
   const tool_color = document.getElementById('tool-color')
   const tool_eraser = document.getElementById('tool-eraser')
+  const undo = document.getElementById('undo')
+  const redo = document.getElementById('redo')
 
   const canvas = document.getElementById('canvas')
   canvas.height = window.innerHeight
   canvas.width = window.innerWidth
   tool.setTool(new Brush(canvas)) // initially it sets to brush
+  canvasState.setCanvas(canvas)
 
   let prevToolEl = tool_brush
 
@@ -43,5 +47,20 @@ function toolInit() {
   tool_color.addEventListener('change', (e) => tool.setColor(e.target.value))
   tool_width.addEventListener('change', (e) => {
     tool.setLineWidth(e.target.value)
+  })
+
+  canvas.addEventListener('mousedown', () => {
+    canvasState.pushToUndo(canvas.toDataURL())
+  })
+
+  undo.addEventListener('click', () => canvasState.undo())
+  redo.addEventListener('click', () => canvasState.redo())
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'z') {
+      canvasState.undo()
+    }
+    if (e.ctrlKey && e.key === 'y') {
+      canvasState.redo()
+    }
   })
 }
