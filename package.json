@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "https://github.com/serzhan181/draw_me_please",
   "author": "serbaev",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "scripts": {
+    "dev": "gulp"
+  }
 }
