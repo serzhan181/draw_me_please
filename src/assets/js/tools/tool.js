@@ -3,6 +3,8 @@ export class Tool {
     this.canvas = canvas
     this.ctx = canvas.getContext('2d')
     this.ctx.lineWidth = 3
+    this.ctx.lineCap = 'round'
+    this.ctx.lineJoin = 'round'
     this._destroyListens()
   }
 

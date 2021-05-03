@@ -18,6 +18,10 @@ class CanvasState {
     this.redoList.push(data)
   }
 
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+  }
+
   undo() {
     if (this.undoList.length) {
       const dataUrl = this.undoList.pop()

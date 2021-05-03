@@ -9,13 +9,13 @@ title: drawwwist | room
         <ul>
           <li id="tool-brush" class="is-active">
             <a>
-              <span class="icon is-small"><i>🖌</i></span>
+              <span class="icon is-small"><i><i class="icon ion-md-brush"></i></i></span>
             </a>
           </li>
 
           <li id="tool-eraser">
             <a>
-              <span class="icon is-small"><i>🗑</i></span>
+              <span class="icon is-small"><i>🧽</i></span>
             </a>
           </li>
 
@@ -37,6 +37,9 @@ title: drawwwist | room
                   <option>5</option>
                   <option>6</option>
                   <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
                 </select>
                 </div>
               </span>
@@ -45,7 +48,7 @@ title: drawwwist | room
 
           <li>
             <a>
-              <span class="icon is-small"><input id="tool-color" type="color"></span>
+              <span class="icon is-small"><i id="tool-color">🎨</i><input id="tool-color-input" type="color"></span>
             </a>
           </li>
         </ul>
@@ -54,8 +57,13 @@ title: drawwwist | room
       <div class="tools-controller">
         <div class="tabs is-toggle">
           <ul>
-            <li id="undo"><a><span class="icon is-small">👈</span></a></li>
-            <li id="redo"><a><span class="icon is-small">👉</span></a></li>
+            <li id="undo"><a><span class="icon is-small"><i class="icon ion-ios-undo"></i></span></a></li>
+            <li id="redo"><a><span class="icon is-small"><i class="icon ion-ios-redo"></i></span></a></li>
+            <li id="tool-clear-canvas">
+              <a>
+                <span class="icon is-small"><i class="icon ion-ios-trash"></i></span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

@@ -7,6 +7,8 @@ import { canvasState } from './store/canvasState.js'
 document.addEventListener('DOMContentLoaded', main)
 
 function main() {
+  // Modals
+  toggleShortcutsModal()
   // Tools
   if (window.location.pathname === '/room.html') {
     toolInit()
@@ -18,7 +20,9 @@ function toolInit() {
   const tool_rect = document.getElementById('tool-rect')
   const tool_brush = document.getElementById('tool-brush')
   const tool_color = document.getElementById('tool-color')
+  const tool_color_input = document.getElementById('tool-color-input')
   const tool_eraser = document.getElementById('tool-eraser')
+  const tool_clear_canvas = document.getElementById('tool-clear-canvas')
   const undo = document.getElementById('undo')
   const redo = document.getElementById('redo')
 
@@ -44,10 +48,14 @@ function toolInit() {
   })
   tool_rect.addEventListener('click', () => toggleTool(Rect, tool_rect))
   tool_eraser.addEventListener('click', () => toggleTool(Eraser, tool_eraser))
-  tool_color.addEventListener('change', (e) => tool.setColor(e.target.value))
+  tool_color.addEventListener('click', () => tool_color_input.click())
+  tool_color_input.addEventListener('change', (e) => {
+    tool.setColor(e.target.value)
+  })
   tool_width.addEventListener('change', (e) => {
     tool.setLineWidth(e.target.value)
   })
+  tool_clear_canvas.addEventListener('click', () => canvasState.clearCanvas())
 
   canvas.addEventListener('mousedown', () => {
     canvasState.pushToUndo(canvas.toDataURL())
@@ -62,5 +70,23 @@ function toolInit() {
     if (e.ctrlKey && e.key === 'y') {
       canvasState.redo()
     }
+  })
+}
+
+function toggleShortcutsModal() {
+  const shortcutsEl = document.getElementById('shortcuts')
+  const shortcutsModalEl = document.getElementById('shortcuts-modal')
+  const shortcutsModalBackEl = document.getElementById(
+    'shortcuts-modal-overlay'
+  )
+  const shortcutsModalClose = document.getElementById('shortcuts-modal-close')
+  shortcutsEl.addEventListener('click', () => {
+    shortcutsModalEl.classList.add('is-active')
+  })
+  shortcutsModalBackEl.addEventListener('click', () => {
+    shortcutsModalEl.classList.remove('is-active')
+  })
+  shortcutsModalClose.addEventListener('click', () => {
+    shortcutsModalEl.classList.remove('is-active')
   })
 }
