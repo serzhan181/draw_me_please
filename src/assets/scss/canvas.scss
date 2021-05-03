@@ -1,0 +1,19 @@
+#canvas {
+  z-index: -1;
+  background-color: rgb(238, 238, 238);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.tools-controller {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+#tool-color-input {
+  display: none;
+}

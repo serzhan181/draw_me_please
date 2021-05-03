@@ -1,0 +1,71 @@
+<header>
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation"> 
+        <div class="navbar-menu">
+            <div class="navbar-item navbar-brand has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <figure class="image">
+                    <img src="assets/images/doomer.jpg" id='user-profile-img' class="is-rounded">
+                  </figure>
+              </a>
+      
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Profile
+                </a>
+                <a class="navbar-item" href="https://github.com/serzhan181/draw_me_please" target="_blank">
+                  Github
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="https://github.com/serzhan181/draw_me_please/issues" target="_blank">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+
+
+          <div class="navbar-start">
+            <a class="navbar-item" href="https://youtube.com" target="_blank" >
+              Home
+            </a>
+
+            <div class="navbar-item">
+            <button class="button is-info" id="shortcuts" title="shortcuts">
+              ⌨
+            </button>
+            <button class="button is-warn" id="test-ws">
+              🧪
+            </button>
+          </div>
+      
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-success">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-light">
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+</header>
+
+<div class="modal" id="shortcuts-modal">
+  <div class="modal-background" id="shortcuts-modal-overlay"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Shortcuts:</p>
+      <button class="delete" aria-label="close" id="shortcuts-modal-close"></button>
+    </header>
+    <section class="modal-card-body">
+      <span class="tag is-info ">Ctrl + Z</span><span class="tag is-light"> = undo</span>
+      <br>
+      <span class="tag is-info ">Ctrl + Z</span><span class="tag is-light"> = redo</span>
+    </section>
+  </div>
+</div>

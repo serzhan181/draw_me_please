@@ -1,0 +1,12 @@
+@import 'bulma/bulma.sass';
+@import 'vars';
+
+body {
+  font-size: 21px;
+  color: $primary-color;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@import 'header';
+@import 'canvas';
