@@ -18,6 +18,18 @@ export class Brush extends Tool {
     this.mouseDown = true
     this.ctx.beginPath()
     this.ctx.moveTo(e.x, e.y)
+    this.socket.send(
+      JSON.stringify({
+        method: 'draw',
+        id: this.id,
+        figure: {
+          type: 'brush',
+          x: e.x,
+          y: e.y,
+          color: this.ctx.strokeStyle,
+        },
+      })
+    )
   }
 
   mouseUpHandler() {
