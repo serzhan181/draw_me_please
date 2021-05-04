@@ -1,13 +1,14 @@
 import { Brush } from './brush.js'
 
 export class Eraser extends Brush {
-  constructor(canvas) {
-    super(canvas)
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id)
+    this.ctx.strokeStyle = 'rgb(238, 238, 238)'
   }
 
-  draw(x, y) {
-    this.ctx.strokeStyle = 'rgb(238, 238, 238)'
-    this.ctx.lineTo(x, y)
-    this.ctx.stroke()
+  static draw(ctx, x, y) {
+    ctx.lineTo(x, y)
+    ctx.lineCap = 'round'
+    ctx.stroke()
   }
 }

@@ -24,6 +24,7 @@ export class Rect extends Tool {
           y: this.startY,
           w: this.width,
           h: this.height,
+          color: this.ctx.fillStyle,
         },
       })
     )
@@ -60,7 +61,8 @@ export class Rect extends Tool {
     }
   }
 
-  static finalDraw(ctx, x, y, w, h) {
+  static finalDraw(ctx, x, y, w, h, color) {
+    ctx.fillStyle = color
     ctx.beginPath()
     ctx.rect(x, y, w, h)
     ctx.fill()

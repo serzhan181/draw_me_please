@@ -1,10 +1,11 @@
+import { tool } from '../store/toolState.js'
 import { Tool } from './tool.js'
 
 export class Brush extends Tool {
   constructor(canvas, socket, id) {
     super(canvas, socket, id)
-    this.ctx.strokeStyle = 'black'
     this.listen()
+    this.ctx.strokeStyle = 'black'
   }
 
   listen() {
@@ -34,7 +35,6 @@ export class Brush extends Tool {
 
   mouseMoveHandler(e) {
     if (this.mouseDown) {
-      // this.draw(e.x, e.y)
       this.socket.send(
         JSON.stringify({
           method: 'draw',
@@ -43,13 +43,15 @@ export class Brush extends Tool {
             type: 'brush',
             x: e.x,
             y: e.y,
+            color: this.ctx.strokeStyle,
           },
         })
       )
     }
   }
 
-  static draw(ctx, x, y) {
+  static draw(ctx, x, y, color) {
+    ctx.strokeStyle = color
     ctx.lineTo(x, y)
     ctx.lineCap = 'round'
     ctx.stroke()

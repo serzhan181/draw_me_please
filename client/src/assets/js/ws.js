@@ -53,7 +53,7 @@ function drawHandler(msg) {
 
   switch (figure.type) {
     case 'brush':
-      Brush.draw(ctx, figure.x, figure.y)
+      Brush.draw(ctx, figure.x, figure.y, figure.color)
       break
 
     case 'finish':
@@ -61,7 +61,7 @@ function drawHandler(msg) {
       break
 
     case 'rect':
-      Rect.finalDraw(ctx, figure.x, figure.y, figure.w, figure.h)
+      Rect.finalDraw(ctx, figure.x, figure.y, figure.w, figure.h, figure.color)
       break
   }
 }
