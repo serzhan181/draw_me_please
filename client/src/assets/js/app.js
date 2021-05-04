@@ -3,17 +3,21 @@ import { Rect } from './tools/rect.js'
 import { Eraser } from './tools/eraser.js'
 import { tool } from './store/toolState.js'
 import { canvasState } from './store/canvasState.js'
-import { testWs } from './ws.js'
+import { toggleModal, requestUsername } from './modals.js'
 
 document.addEventListener('DOMContentLoaded', main)
 
 function main() {
-  // TESTING ONE TWO ONE TWO
-  testWs()
   // Modals
-  toggleShortcutsModal()
+  toggleModal('shortcuts', 'shortcuts-modal', [
+    'shortcuts-modal-overlay',
+    'shortcuts-modal-close',
+  ])
+  requestUsername()
   // Tools
-  if (window.location.pathname === '/room.html') {
+  if (/room\/\w+/g.test(window.location.pathname)) {
+    const id = location.pathname.replace('/room/', '')
+    canvasState.setSessionId(id)
     toolInit()
   }
 }
@@ -73,23 +77,5 @@ function toolInit() {
     if (e.ctrlKey && e.key === 'y') {
       canvasState.redo()
     }
-  })
-}
-
-function toggleShortcutsModal() {
-  const shortcutsEl = document.getElementById('shortcuts')
-  const shortcutsModalEl = document.getElementById('shortcuts-modal')
-  const shortcutsModalBackEl = document.getElementById(
-    'shortcuts-modal-overlay'
-  )
-  const shortcutsModalClose = document.getElementById('shortcuts-modal-close')
-  shortcutsEl.addEventListener('click', () => {
-    shortcutsModalEl.classList.add('is-active')
-  })
-  shortcutsModalBackEl.addEventListener('click', () => {
-    shortcutsModalEl.classList.remove('is-active')
-  })
-  shortcutsModalClose.addEventListener('click', () => {
-    shortcutsModalEl.classList.remove('is-active')
   })
 }

@@ -4,7 +4,7 @@
             <div class="navbar-item navbar-brand has-dropdown is-hoverable">
               <a class="navbar-link">
                 <figure class="image">
-                    <img src="assets/images/doomer.jpg" id='user-profile-img' class="is-rounded">
+                    <img src="/assets/images/doomer.jpg" id='user-profile-img' class="is-rounded">
                   </figure>
               </a>
       
@@ -29,11 +29,11 @@
             </a>
 
             <div class="navbar-item">
-            <button class="button is-info" id="shortcuts" title="shortcuts">
+            <button class="button is-info mr-2" id="shortcuts" title="shortcuts">
               ⌨
             </button>
-            <button class="button is-warn" id="test-ws">
-              🧪
+            <button class="button is-info" id="username" title="username">
+              👤
             </button>
           </div>
       
@@ -66,6 +66,33 @@
       <span class="tag is-info ">Ctrl + Z</span><span class="tag is-light"> = undo</span>
       <br>
       <span class="tag is-info ">Ctrl + Z</span><span class="tag is-light"> = redo</span>
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="username-modal">
+  <div class="modal-background" id="username-modal-overlay"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Enter your username, please:</p>
+      <button class="delete" aria-label="close" id="username-modal-close"></button>
+    </header>
+    <section class="modal-card-body">
+      
+<div class="control has-icons-left">
+  <input class="input is-medium" type="text" placeholder="username" id="username-input">
+  <span class="icon is-left">
+    <i class="icon ion-md-person"></i>
+  </span>
+</div>
+
+<button class="button is-success mt-2" id="username-submit-btn">
+  <span class="icon is-small">
+    <i class="icon ion-md-checkmark"></i>
+  </span>
+  <span>Save</span>
+</button>
+
     </section>
   </div>
 </div>

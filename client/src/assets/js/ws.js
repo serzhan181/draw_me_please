@@ -1,15 +1,21 @@
-export function testWs() {
-  const test_ws = document.getElementById('test-ws')
-  const socket = new WebSocket('ws://localhost:5000/')
+import { canvasState } from './store/canvasState.js'
 
-  socket.onopen = () => {
-    console.log('FRONT: WS CONNECTED')
-  }
-  socket.onmessage = (e) => {
-    console.log(`S: ${e.data}`)
-  }
+export function connectionHandler() {
+  if (canvasState.username) {
+    const socket = new WebSocket('ws://localhost:5000/')
 
-  test_ws.addEventListener('click', () => {
-    socket.send('Hello server)))')
-  })
+    socket.onopen = () => {
+      socket.send(
+        JSON.stringify({
+          username: canvasState.username,
+          id: canvasState.sessionId,
+          method: 'connection',
+        })
+      )
+
+      socket.onmessage = (e) => {
+        console.log(e.data)
+      }
+    }
+  }
 }

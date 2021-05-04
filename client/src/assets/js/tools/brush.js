@@ -3,6 +3,7 @@ import { Tool } from './tool.js'
 export class Brush extends Tool {
   constructor(canvas) {
     super(canvas)
+    this.ctx.strokeStyle = 'black'
     this.listen()
   }
 

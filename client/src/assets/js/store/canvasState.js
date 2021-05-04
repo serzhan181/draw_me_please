@@ -3,11 +3,21 @@ class CanvasState {
     this.canvas = null
     this.undoList = []
     this.redoList = []
+    this.username = ''
+    this.sessionId = null
   }
 
   setCanvas(canvas) {
     this.canvas = canvas
     this.ctx = canvas.getContext('2d')
+  }
+
+  setSessionId(sessionId) {
+    this.sessionId = sessionId
+  }
+
+  setUsername(username) {
+    this.username = username
   }
 
   pushToUndo(data) {
