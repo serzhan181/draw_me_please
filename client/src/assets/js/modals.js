@@ -28,15 +28,15 @@ function closeModal(modalId) {
   modal.classList.remove('is-active')
 }
 
-export function requestUsername() {
+export async function requestUsername() {
   toggleModal('username', 'username-modal', [], true)
   const username_input = document.getElementById('username-input')
   const submit_btn = document.getElementById('username-submit-btn')
 
   submit_btn.addEventListener('click', () => {
     if (username_input.value.length > 2) {
-      canvasState.setUsername(username_input.value)
       closeModal('username-modal')
+      canvasState.setUsername(username_input.value)
       connectionHandler()
     }
   })

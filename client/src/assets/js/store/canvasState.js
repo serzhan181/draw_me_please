@@ -5,11 +5,16 @@ class CanvasState {
     this.redoList = []
     this.username = ''
     this.sessionId = null
+    this.socket = null
   }
 
   setCanvas(canvas) {
     this.canvas = canvas
     this.ctx = canvas.getContext('2d')
+  }
+
+  setSocket(socket) {
+    this.socket = socket
   }
 
   setSessionId(sessionId) {

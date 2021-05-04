@@ -1,8 +1,8 @@
 import { Tool } from './tool.js'
 
 export class Rect extends Tool {
-  constructor(canvas) {
-    super(canvas)
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id)
     this.listen()
   }
 
@@ -14,6 +14,19 @@ export class Rect extends Tool {
 
   mouseUpHandler() {
     this.mouseDown = false
+    this.socket.send(
+      JSON.stringify({
+        method: 'draw',
+        id: this.id,
+        figure: {
+          type: 'rect',
+          x: this.startX,
+          y: this.startY,
+          w: this.width,
+          h: this.height,
+        },
+      })
+    )
   }
 
   mouseDownHandler(e) {
@@ -28,9 +41,9 @@ export class Rect extends Tool {
     if (this.mouseDown) {
       const currentX = e.x
       const currentY = e.y
-      const width = currentX - this.startX
-      const height = currentY - this.startY
-      this.draw(this.startX, this.startY, width, height)
+      this.width = currentX - this.startX
+      this.height = currentY - this.startY
+      this.draw(this.startX, this.startY, this.width, this.height)
     }
   }
 
@@ -45,5 +58,12 @@ export class Rect extends Tool {
       this.ctx.fill()
       this.ctx.stroke()
     }
+  }
+
+  static finalDraw(ctx, x, y, w, h) {
+    ctx.beginPath()
+    ctx.rect(x, y, w, h)
+    ctx.fill()
+    ctx.stroke()
   }
 }

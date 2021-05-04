@@ -1,5 +1,8 @@
 export class Tool {
-  constructor(canvas) {
+  constructor(canvas, socket, id) {
+    this.socket = socket
+    this.id = id
+
     this.canvas = canvas
     this.ctx = canvas.getContext('2d')
     this.ctx.lineWidth = 3
