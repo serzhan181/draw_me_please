@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
 app.ws('/', (ws, req) => {
   ws.on('message', (msg) => {
     msg = JSON.parse(msg)
-    console.log(msg)
     switch (msg.method) {
       case 'connection':
         connectionHandler(ws, msg)
