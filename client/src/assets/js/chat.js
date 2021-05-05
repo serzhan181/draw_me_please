@@ -46,4 +46,15 @@ export class Chat {
 
     chatEl.appendChild(message)
   }
+
+  static greetings(chatEl, username) {
+    const message = document.createElement('div')
+    message.innerHTML = `
+    <div class="block has-background-light m-0">
+      <span class="tag is-info">User ${username} connected.</span>
+    </div>
+    `
+
+    chatEl.appendChild(message)
+  }
 }

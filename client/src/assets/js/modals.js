@@ -28,7 +28,7 @@ function closeModal(modalId) {
   modal.classList.remove('is-active')
 }
 
-export async function requestUsername() {
+export function requestUsername() {
   toggleModal('username', 'username-modal', [], true)
   const username_input = document.getElementById('username-input')
   const submit_btn = document.getElementById('username-submit-btn')

@@ -10,7 +10,7 @@ function main() {
     'shortcuts-modal-overlay',
     'shortcuts-modal-close',
   ])
-  // Tools
+  // Check if user is in /room/{id}
   if (/room\/\w+/g.test(window.location.pathname)) {
     const id = location.pathname.replace('/room/', '')
     canvasState.setSessionId(id)

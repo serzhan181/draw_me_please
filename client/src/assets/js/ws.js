@@ -8,7 +8,13 @@ import { Chat } from './chat.js'
 
 export class Room {
   constructor() {
-    requestUsername()
+    console.log(canvasState.username)
+    if (!canvasState.username.length) {
+      requestUsername()
+      return
+    }
+
+    connectionHandler()
   }
 }
 
@@ -17,9 +23,9 @@ export function connectionHandler() {
     const socket = new WebSocket('ws://localhost:5000/')
     canvasState.setSocket(socket)
     toolInit(socket, canvasState.sessionId)
-    tool.setTool(new Brush(canvasState.canvas, socket, canvasState.sessionId))
+    tool.setTool(new Brush(canvasState.canvas, socket, canvasState.sessionId)) // Default tool
 
-    const chat = new Chat(canvasState.username, socket, canvasState.sessionId)
+    new Chat(canvasState.username, socket, canvasState.sessionId)
 
     socket.onopen = () => {
       socket.send(
@@ -35,7 +41,9 @@ export function connectionHandler() {
 
         switch (msg.method) {
           case 'connection':
-            console.log(`User ${msg.username} joined!`)
+            const chatEl = document.getElementById('chat-in')
+
+            Chat.greetings(chatEl, msg.username)
             break
 
           case 'draw':
