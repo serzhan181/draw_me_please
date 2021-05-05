@@ -4,6 +4,7 @@ import { tool } from './store/toolState'
 import { requestUsername } from './modals.js'
 import { Rect } from './tools/rect.js'
 import { Eraser } from './tools/eraser.js'
+import { Chat } from './chat.js'
 
 export class Room {
   constructor() {
@@ -12,13 +13,13 @@ export class Room {
 }
 
 export function connectionHandler() {
-  console.log(canvasState.username)
-
   if (canvasState.username) {
     const socket = new WebSocket('ws://localhost:5000/')
     canvasState.setSocket(socket)
     toolInit(socket, canvasState.sessionId)
     tool.setTool(new Brush(canvasState.canvas, socket, canvasState.sessionId))
+
+    const chat = new Chat(canvasState.username, socket, canvasState.sessionId)
 
     socket.onopen = () => {
       socket.send(
@@ -40,10 +41,21 @@ export function connectionHandler() {
           case 'draw':
             drawHandler(msg)
             break
+
+          case 'message':
+            messageHandler(msg)
+            break
         }
       }
     }
   }
+}
+
+function messageHandler(msg) {
+  const { authorName, body } = msg.message
+
+  const chatEl = document.getElementById('chat-in')
+  Chat.staticAddMessage(chatEl, authorName, body)
 }
 
 function drawHandler(msg) {

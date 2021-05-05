@@ -1,4 +1,3 @@
-import { tool } from '../store/toolState.js'
 import { Tool } from './tool.js'
 
 export class Brush extends Tool {
@@ -23,7 +22,7 @@ export class Brush extends Tool {
         method: 'draw',
         id: this.id,
         figure: {
-          type: 'brush',
+          type: 'finish',
           x: e.x,
           y: e.y,
           color: this.ctx.strokeStyle,

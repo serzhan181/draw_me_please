@@ -31,6 +31,10 @@ app.ws('/', (ws, req) => {
       case 'draw':
         broadcastConnection(ws, msg)
         break
+
+      case 'message':
+        broadcastConnection(ws, msg)
+        break
     }
   })
 })
