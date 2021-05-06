@@ -1,20 +1,83 @@
 import { canvasState } from './store/canvasState.js'
 import { Brush } from './tools/brush.js'
-import { tool } from './store/toolState'
-import { requestUsername } from './modals.js'
+import { tool } from './store/toolState.js'
+import { requestUsername, toggleModal, closeModal } from './modals.js'
 import { Rect } from './tools/rect.js'
 import { Eraser } from './tools/eraser.js'
 import { Chat } from './chat.js'
+import { getRooms, insertRoom } from './lib/supabase.js'
 
 export class Room {
   constructor() {
-    console.log(canvasState.username)
     if (!canvasState.username.length) {
-      requestUsername()
+      requestUsername({ callCallback: true })
       return
     }
 
     connectionHandler()
+  }
+
+  static async pullRooms() {
+    const freeRooms = document.getElementById('free-rooms')
+
+    const rooms = await getRooms()
+
+    if (Array.isArray(rooms)) {
+      for (const { name, id } of rooms) {
+        const r = document.createElement('div')
+        r.classList.add(['card', 'is-rounded', 'has-background-white'])
+
+        r.innerHTML = `
+      <header class="card-header">
+        <p class="card-header-title">
+        ${name}
+        </p>
+      <a class="card-header-icon" aria-label="more options" href="/room/${id}">
+        <span class="icon title is-4 has-text-success-dark">
+          <strong>▶</strong>
+        </span>
+      </a>
+    </header>
+      `
+
+        freeRooms.appendChild(r)
+      }
+    }
+  }
+
+  static listenCreateNewRoom() {
+    toggleModal('room-action', 'room-modal', ['room-overlay', 'room-close'])
+
+    const form = document.getElementById('room-form')
+    const input = document.getElementById('room-input')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      if (!input.value.length) return
+
+      const [room] = await insertRoom({ name: input.value })
+
+      const freeRooms = document.getElementById('free-rooms')
+      const roomEl = document.createElement('div')
+      roomEl.classList.add(['card', 'is-rounded', 'has-background-white'])
+
+      roomEl.innerHTML = `
+      <header class="card-header">
+        <p class="card-header-title">
+        ${room.name}
+        </p>
+      <a class="card-header-icon" aria-label="more options" href="/room/${room.id}">
+        <span class="icon title is-4 has-text-success-dark">
+          <strong>▶</strong>
+        </span>
+      </a>
+    </header>
+      `
+
+      freeRooms.appendChild(roomEl)
+
+      closeModal('room-modal')
+    })
   }
 }
 

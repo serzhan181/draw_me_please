@@ -32,6 +32,14 @@
             <button class="button is-info mr-2" id="shortcuts" title="shortcuts">
               ⌨
             </button>
+
+            <button class="button is-success" id="room-action">
+              <span class="icon">
+                <i class="icon ion-md-add"></i>
+              </span>
+              <span>new room</span>
+            </button>
+
             <button class="button is-info" id="username" title="username">
               👤
             </button>
@@ -54,6 +62,24 @@
         </div>
       </nav>
 </header>
+
+<div class="modal" id="room-modal">
+  <div class="modal-background" id="room-overlay"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create room:</p>
+      <button class="delete" aria-label="close" id="room-close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form id="room-form">
+        <input name="roomName" type="text" class="input is-primary" autocomplete="off" id="room-input" placeholder="Room name">
+        <button class="button is-primary mt-4">Create</button>
+      </form>
+
+    </section>
+  </div>
+</div>
 
 <div class="modal" id="shortcuts-modal">
   <div class="modal-background" id="shortcuts-modal-overlay"></div>

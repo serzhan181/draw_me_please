@@ -23,12 +23,12 @@ export function toggleModal(
   })
 }
 
-function closeModal(modalId) {
+export function closeModal(modalId) {
   const modal = document.getElementById(modalId)
   modal.classList.remove('is-active')
 }
 
-export function requestUsername() {
+export function requestUsername({ callCallback = true }) {
   toggleModal('username', 'username-modal', [], true)
   const username_input = document.getElementById('username-input')
   const submit_btn = document.getElementById('username-submit-btn')
@@ -37,7 +37,9 @@ export function requestUsername() {
     if (username_input.value.length > 2) {
       closeModal('username-modal')
       canvasState.setUsername(username_input.value)
-      connectionHandler()
+      if (callCallback) {
+        connectionHandler()
+      }
     }
   })
 }

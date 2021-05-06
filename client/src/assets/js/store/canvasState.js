@@ -3,7 +3,7 @@ class CanvasState {
     this.canvas = null
     this.undoList = []
     this.redoList = []
-    this.username = ''
+    this.username = localStorage.getItem('username') || ''
     this.sessionId = null
     this.socket = null
   }
@@ -22,6 +22,7 @@ class CanvasState {
   }
 
   setUsername(username) {
+    localStorage.setItem('username', username)
     this.username = username
   }
 

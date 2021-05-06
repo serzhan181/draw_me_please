@@ -4,4 +4,5 @@ client/dist
 server/dist
 client/yarn.lock
 server/yarn.lock
-config.json
+client/config.json
+client/yarn-error.log
