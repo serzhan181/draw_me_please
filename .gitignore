@@ -1,8 +1,10 @@
 client/node_modules
-server/node_modules
+node_modules
 client/dist
-server/dist
+dist
+client
 client/yarn.lock
-server/yarn.lock
+yarn.lock
 client/config.json
 client/yarn-error.log
+.vercel

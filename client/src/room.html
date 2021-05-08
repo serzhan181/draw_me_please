@@ -55,20 +55,22 @@ title: drawwwist | room
       </div>
 
       <div class='chat'>
-
+        
         <div class="has-background-white p-2" id="chat-in" style="overflow-y: auto;">
           <!-- Messages -->
-      </div>
+        </div>
+        
+        <form class="chat-input">
+          <input type="text" autocomplete="off" placeholder="your guess..." class="input is-primary mt-2" id="chat-input">
 
-      <form class="chat-input">
-        <input type="text" autocomplete="off" placeholder="your guess..." class="input is-primary mt-2" id="chat-input">
-
-        <button class="button is-primary mt-1" type="submit" id="chat-submit">
-          <span class="icon is-small">
-            <i class="icon ion-md-send"></i>
-          </span>
-        </button>
-      </form>
+          <button class="button is-primary mt-1" type="submit" id="chat-submit">
+            <span class="icon is-small">
+              <i class="icon ion-md-send"></i>
+            </span>
+          </button>
+        </form>
+        
+        <button class="button is-dark is-fixed-top" id="ready-button">ready</button>
       </div>
 
       <div class="tools-controller">

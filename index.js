@@ -5,7 +5,7 @@ const aWss = WSServer.getWss()
 const cors = require('cors')
 const path = require('path')
 
-const clientPath = path.join(__dirname, '..', 'client', 'dist')
+const clientPath = path.join(__dirname, 'client', 'dist')
 app.use(cors())
 app.use('/assets', express.static(path.resolve(clientPath, 'assets')))
 

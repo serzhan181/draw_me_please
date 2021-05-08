@@ -47,3 +47,11 @@
   grid-template-columns: 85% 15%;
   place-items: center;
 }
+
+// READY BUTTON
+#ready-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

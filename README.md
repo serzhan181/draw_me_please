@@ -1,6 +1,6 @@
 # 🖌 Draw_me_please
 
-## About
+## About (still in development)
 
 - ❓ _What is this?_ - This is an online web game with rooms, chats in them etc.
 - ▶ _How to play?_ - App gonna give you a word (only you know the word), then you have to draw this up - others have to guess. If they guess your drawing you gonna get a score as well as the person who guessed it gonna get score too.

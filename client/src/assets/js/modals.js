@@ -1,5 +1,5 @@
 import { canvasState } from './store/canvasState.js'
-import { connectionHandler } from './ws.js'
+import { connectionHandler } from './room.js'
 
 export function toggleModal(
   triggerModalId,
@@ -28,7 +28,7 @@ export function closeModal(modalId) {
   modal.classList.remove('is-active')
 }
 
-export function requestUsername({ callCallback = true }) {
+export function requestUsername({ callCallback = true, drawerName }) {
   toggleModal('username', 'username-modal', [], true)
   const username_input = document.getElementById('username-input')
   const submit_btn = document.getElementById('username-submit-btn')
@@ -38,7 +38,7 @@ export function requestUsername({ callCallback = true }) {
       closeModal('username-modal')
       canvasState.setUsername(username_input.value)
       if (callCallback) {
-        connectionHandler()
+        connectionHandler(drawerName)
       }
     }
   })

@@ -1,6 +1,6 @@
 import { canvasState } from './store/canvasState.js'
 import { toggleModal, requestUsername } from './modals.js'
-import { Room } from './ws.js'
+import { Room } from './room.js'
 
 document.addEventListener('DOMContentLoaded', main)
 

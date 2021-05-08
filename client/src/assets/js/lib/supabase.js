@@ -18,3 +18,10 @@ export async function insertRoom({ name }) {
 
   return data
 }
+
+const subscription = supabase
+  .from('rooms')
+  .on('INSERT', (payload) => {
+    console.log(payload)
+  })
+  .subscribe()
